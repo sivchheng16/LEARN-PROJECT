@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: white;
+      }
+
+      .game-container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        color: #fff;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .choices {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 30px 0;
+        flex-wrap: wrap;
+      }
+
+      .choice-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        padding: 20px;
+        font-size: 3em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 100px;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .choice-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .choice-btn:active {
+        transform: translateY(-2px);
+      }
+
+      .game-info {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .result {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 20px 0;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .score {
+        font-size: 1.2em;
+        margin: 15px 0;
+      }
+
+      .choices-display {
+        font-size: 1.3em;
+        margin: 15px 0;
+      }
+
+      .reset-btn {
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        color: white;
+        padding: 12px 25px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+      }
+
+      .reset-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.6);
+      }
+
+      .win {
+        color: #4caf50;
+      }
+      .lose {
+        color: #f44336;
+      }
+      .tie {
+        color: #ffc107;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>🎮 Rock Paper Scissors</h1>
+
+      <div class="choices">
+        <button class="choice-btn" onclick="playGame('rock')">🪨</button>
+        <button class="choice-btn" onclick="playGame('paper')">📄</button>
+        <button class="choice-btn" onclick="playGame('scissors')">✂️</button>
+      </div>
+
+      <div class="game-info">
+        <div class="choices-display" id="choices-display">
+          Make your choice!
+        </div>
+        <div class="result" id="result">Click a button to start playing!</div>
+        <div class="score" id="score">Player: 0 | Computer: 0 | Ties: 0</div>
+      </div>
+
+      <button class="reset-btn" onclick="resetGame()">Reset Game</button>
+    </div>
+
+    <script>
+      // Game state variables
+      let playerScore = 0;
+      let computerScore = 0;
+      let ties = 0;
+
+      // Possible choices
+      const choices = ["rock", "paper", "scissors"];
+
+      // Emojis for display
+      const choiceEmojis = {
+        rock: "🪨",
+        paper: "📄",
+        scissors: "✂️",
+      };
+
+      function getComputerChoice() {
+        // Generate random number between 0 and 2
+        const randomIndex = Math.floor(Math.random() * 3);
+        return choices[randomIndex];
+      }
+
+      function determineWinner(playerChoice, computerChoice) {
+        // Check for tie
+        if (playerChoice === computerChoice) {
+          return "tie";
+        }
+
+        // Check winning conditions for player
+        if (
+          (playerChoice === "rock" && computerChoice === "scissors") ||
+          (playerChoice === "paper" && computerChoice === "rock") ||
+          (playerChoice === "scissors" && computerChoice === "paper")
+        ) {
+          return "win";
+        } else {
+          return "lose";
+        }
+      }
+
+      function updateDisplay(playerChoice, computerChoice, result) {
+        const choicesDisplay = document.getElementById("choices-display");
+        const resultDisplay = document.getElementById("result");
+        const scoreDisplay = document.getElementById("score");
+
+        // Show the choices
+        choicesDisplay.innerHTML = `You: ${choiceEmojis[playerChoice]} vs Computer: ${choiceEmojis[computerChoice]}`;
+
+        // Show the result
+        let resultText = "";
+        let resultClass = "";
+
+        if (result === "win") {
+          resultText = "🎉 You Win!";
+          resultClass = "win";
+          playerScore++;
+        } else if (result === "lose") {
+          resultText = "😔 You Lose!";
+          resultClass = "lose";
+          computerScore++;
+        } else {
+          resultText = "🤝 It's a Tie!";
+          resultClass = "tie";
+          ties++;
+        }
+
+        resultDisplay.innerHTML = resultText;
+        resultDisplay.className = `result ${resultClass}`;
+
+        // Update score
+        scoreDisplay.innerHTML = `Player: ${playerScore} | Computer: ${computerScore} | Ties: ${ties}`;
+      }
+
+      function playGame(playerChoice) {
+        // Get computer's choice
+        const computerChoice = getComputerChoice();
+
+        // Determine winner
+        const result = determineWinner(playerChoice, computerChoice);
+
+        // Update the display
+        updateDisplay(playerChoice, computerChoice, result);
+      }
+
+      function resetGame() {
+        // Reset all scores
+        playerScore = 0;
+        computerScore = 0;
+        ties = 0;
+
+        // Reset display
+        document.getElementById("choices-display").innerHTML =
+          "Make your choice!";
+        document.getElementById("result").innerHTML =
+          "Click a button to start playing!";
+        document.getElementById("result").className = "result";
+        document.getElementById("score").innerHTML =
+          "Player: 0 | Computer: 0 | Ties: 0";
+      }
+    </script>
+  </body>
+</html>
