@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   Leaf,
   Instagram,
@@ -9,13 +9,13 @@ import {
   Mail,
   MapPin,
   Phone,
-} from 'lucide-react';
+} from "lucide-react";
 
-const Footer: React.FC = () => {
+const fooder: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-forest-900 text-cream">
+    <fooder className="bg-forest-900 text-cream">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Column 1: Logo & Description */}
@@ -70,12 +70,12 @@ const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-2">
               {[
-                { name: 'About Us', path: '/about' },
-                { name: 'Our Projects', path: '/projects' },
-                { name: 'Sustainability', path: '/sustainability' },
-                { name: 'Community', path: '/community' },
-                { name: 'Visit Us', path: '/visit' },
-                { name: 'Contact', path: '/contact' },
+                { name: "About Us", path: "/about" },
+                { name: "Our Projects", path: "/projects" },
+                { name: "Sustainability", path: "/sustainability" },
+                { name: "Community", path: "/community" },
+                { name: "Visit Us", path: "/visit" },
+                { name: "Contact", path: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
                   <Link
@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-forest-300 mt-0.5 flex-shrink-0" />
                 <span className="text-forest-100/80 text-sm">
-                  VitaminAir Sustainable Village, 
+                  VitaminAir Sustainable Village,
                   <br />
                   Mondulkiri Province,
                   <br />
@@ -126,7 +126,8 @@ const Footer: React.FC = () => {
               Stay Connected
             </h3>
             <p className="text-forest-100/80 text-sm mb-3">
-              Subscribe to our newsletter for updates on our projects and events.
+              Subscribe to our newsletter for updates on our projects and
+              events.
             </p>
             <form className="space-y-2">
               <input
@@ -157,8 +158,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </fooder>
   );
 };
 
-export default Footer;
+export default fooder;

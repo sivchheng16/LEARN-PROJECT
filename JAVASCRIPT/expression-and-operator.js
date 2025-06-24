@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exprssion and Operater</title>
-  </head>
-  <body>
-    <script>
+
       //Assignment Operater ------------------------
       //augmented assignment operators = used to replace a statement where an operator takes a variable as one of its arguments and then assigns the result back to the same variable x = x+1; =>x+=1
 
@@ -71,7 +63,6 @@
 
       //
       let text = "hello";
-      console.log(!text);  
-    </script>
-  </body>
-</html>
+      console.log(!text);
+      console.log("hehhehehehehe");
+    

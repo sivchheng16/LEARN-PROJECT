@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import Navbar from '../components/navigation/Navbar';
-import Footer from '../components/navigation/Footer';
+import React, { useState, useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import Navbar from "../components/navigation/Navbar";
+import fooder from "../components/navigation/fooder";
 
 const MainLayout: React.FC = () => {
   const { pathname } = useLocation();
@@ -13,9 +13,9 @@ const MainLayout: React.FC = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -39,7 +39,7 @@ const MainLayout: React.FC = () => {
           </motion.div>
         </AnimatePresence>
       </main>
-      <Footer />
+      <fooder />
     </div>
   );
 };
