@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body
+    style="
+      text-align: center;
+      background: linear-gradient(
+        135deg,
+        rgb(126, 154, 225),
+        rgb(128, 242, 242)
+      );
+    "
+  >
+    
+      <div id="demo"></div>
+      <h1 style="margin-bottom: -30px; color: rgb(36, 69, 152)">
+        TIME zone in Cambodia
+      </h1>
+      <div
+        id="time"
+        style="font-size: 100px; font-family: 'Popin', sans-serif"
+      ></div>
+
+    <script>
+      //   function myDisplay(some) {
+      //     document.getElementById("demo").innerHTML = some;
+      //   }
+
+      //   function mycalulatNumber(num1, num2) {
+      //     let sum = num1 + num2;
+      //     return sum;
+      //   }
+
+      //   let result = mycalulatNumber(10, 40);
+      //   myDisplay(result);
+
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      //   function myDisplay(some) {
+      //     document.getElementById('demo').innerHTML = some;
+
+      //   }
+      //   function mycalulator(num1, num2, calulate){
+      //     let sum = num1 * num2;
+      //     calulate(sum)
+      //   }
+
+      //   mycalulator(4, 5, myDisplay)
+
+      function mycalculator(let1, let2) {
+        let result = let1 * let2;
+        return result;
+      }
+
+      let result = mycalculator(4, 9);
+      console.log(result);
+
+      const add = (a, b) => a + b;
+      console.log(add);
+
+      /////
+
+      async function fetchData() {
+        const response = await fetch("https://api.example.com/data");
+        const data = await response.json();
+        console.log(data);
+      }
+
+      ///
+
+      setInterval(myfunction, 1000);
+      function myfunction() {
+        let d = new Date();
+        document.getElementById("time").innerHTML =
+          d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+      }
+      console.log(myfunction());
+    </script>
+  </body>
+</html>

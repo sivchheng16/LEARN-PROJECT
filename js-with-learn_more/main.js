@@ -364,7 +364,7 @@ let nows = new Date("2025-05-15T16:00:45");
 console.log(now);
 console.log(nows);
 
-console.log(now.getDate());
+console.log(nows.getDate());
 console.log(now.getDay());
 console.log(now.getMonth());
 console.log(now.getFullYear());
