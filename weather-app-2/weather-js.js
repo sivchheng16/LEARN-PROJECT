@@ -7,6 +7,7 @@ const conditionElement = document.querySelector(".condition");
 const iconElement = document.querySelector(".icon");
 const timeElement = document.getElementById("time");
 const errorElement = document.querySelector(".error");
+
 //Event listener for form submit
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -32,7 +33,7 @@ function fetchWeather(city) {
       locationElement.textContent = `${data.name}, ${data.sys.country}`;
       tempElement.textContent = ` ${Math.round(data.main.temp)}°C`;
 
-      const weatherMain = `${data.weather[0].main}`;
+      const weatherMain = `${data.weather[0].description}`;
       conditionElement.textContent = weatherMain;
 
       if (data.weather[0].main == "Clouds") {
@@ -42,6 +43,7 @@ function fetchWeather(city) {
       } else if (data.weather[0].main == "Clears") {
         iconElement.src = "images/clear.png";
       }
+      document.querySelector(".weatherInfo").style.display = "block";
 
       setInterval(() => {
         const now = new Date();

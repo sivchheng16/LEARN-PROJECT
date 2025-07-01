@@ -81,8 +81,9 @@
         font-size: 65px;
       }
 
-      .weatherInof {
+      .weatherInfo {
         margin: 20px;
+        display: none;
       }
       #time {
         font-size: 20px;
@@ -90,7 +91,7 @@
         color: hwb(208 200px 500px);
       }
 
-      .weatherInof img {
+      .weatherInfo img {
         width: 150px;
         font-size: 40px;
         margin: 10px 0;
@@ -120,15 +121,14 @@
         </button>
       </form>
 
-      <div class="weatherInof">
+      <div class="weatherInfo">
         <h1 class="location">Phnom Penh,KH</h1>
         <p id="time"></p>
         <h2 class="temperature">--°c</h2>
         <img src="images/rain.png" class="icon" />
+        <p class="condition">Condition</p>
+        <!-- <p class="error"></p> -->
       </div>
-
-      <p class="condition">Condition</p>
-      <p class="error"></p>
     </main>
 
     <script src="weather-js.js"></script>
