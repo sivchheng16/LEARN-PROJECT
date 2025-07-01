@@ -65,6 +65,10 @@
         cursor: pointer;
       }
 
+      .search button:hover {
+        background: hsla(0, 0%, 100%, 0.781);
+      }
+
       .search button img {
         width: 16px;
       }
@@ -81,18 +85,23 @@
         margin: 20px;
       }
       #time {
-        font-size: 15px;
-        margin-top: -10px;
-        margin-bottom: 20px;
+        font-size: 20px;
+        margin: 10px;
+        color: hwb(208 200px 500px);
       }
 
       .weatherInof img {
         width: 150px;
         font-size: 40px;
         margin: 10px 0;
+        filter: drop-shadow(0, 10px 50px #333);
       }
 
       .condition {
+        font-size: 25px;
+        font-weight: bold;
+      }
+      .error {
         font-size: 25px;
         font-weight: bold;
       }
@@ -100,12 +109,16 @@
   </head>
   <body>
     <main class="weather-card">
-      <div class="search">
-        <input type="text" placeholder="Enter Your Country.." />
-        <button class="search-button">
+      <form class="search">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Enter Your Country.."
+        />
+        <button class="submit">
           <img src="images/search.png" />
         </button>
-      </div>
+      </form>
 
       <div class="weatherInof">
         <h1 class="location">Phnom Penh,KH</h1>
@@ -115,36 +128,9 @@
       </div>
 
       <p class="condition">Condition</p>
+      <p class="error"></p>
     </main>
 
-    <script>
-      setInterval(() => {
-        let date = new Date();
-        document.getElementById("time").innerHTML = date.toLocaleString();
-      }, 1000);
-
-      ///get api key
-
-      const apiKey = "a0e53c346a97f76ab584c29acdb94c82";
-      const searchBtn = document.getElementById(".search-button");
-      const input = document.getElementById(".search input");
-
-      function fetchWeather(city) {
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => {
-            document.querySelector(
-              ".location"
-            ).textContent = `${data.name},${data.sys.country}`;
-            document.getElementById("temperature").textContent =
-              "(data.main.temperature)°c";
-          });
-      }
-
-      //test promise
-
-    </script>
+    <script src="weather-js.js"></script>
   </body>
 </html>
