@@ -24,6 +24,7 @@ function fetchWeather(city) {
   fetch(apiUrl)
     .then((response) => {
       if (!response.ok) {
+        alert("city not found");
         throw new Error("city not found");
       }
       return response.json();
