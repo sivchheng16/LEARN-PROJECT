@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>Input your task</h3>
+
+    <input type="text" id="taskInput" placeholder="Enter your task" />
+    <button onclick="addTask()">ADD</button>
+    <ul id="taskList"></ul>
+
+    <script>
+      let taskInput = document.getElementById("taskInput");
+      let taskList = document.getElementById("taskList");
+
+      // add event when enter
+      taskInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          addTask();
+        }
+      });
+
+      function addTask() {
+        let taskText = taskInput.value.trim();
+
+        if (taskText !== "") {
+          const li = document.createElement("li");
+
+          li.textContent = taskText;
+          taskList.appendChild(li);
+
+          // create and add style
+          const deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "❌";
+          deleteBtn.style.marginLeft = "15px";
+          deleteBtn.style.fontSize = "10px";
+
+          // show delete btn
+          li.appendChild(deleteBtn);
+
+          // add function delete btn
+          deleteBtn.addEventListener("click", function () {
+            taskList.removeChild(li);
+          });
+
+          console.log(taskText);
+          taskInput.value = "";
+        } else alert("Please Enter Your Task...!!!");
+      }
+    </script>
+  </body>
+</html>

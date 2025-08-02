@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Mode Toggle</title>
+
+    <style>
+      body {
+        color: black;
+        font-size: 15px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+          text-align: center;
+      }
+
+      #btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .dark-mode {
+        background-color: black;
+        color: aliceblue;
+      }
+    </style>
+  </head>
+  <body id="body">
+    <h1>Hii</h1>
+    <p>click the button below if you want to change to dark mode</p>
+
+    <button id="btn" onclick="btnDark()">button</button>
+
+    <script>
+      function btnDark() {
+        document.body.classList.toggle("dark-mode");
+      }
+    </script>
+  </body>
+</html>
