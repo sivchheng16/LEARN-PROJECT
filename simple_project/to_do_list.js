@@ -10,7 +10,7 @@ addTaskBtn.addEventListener("click", function () {
 
     li.textContent = taskText;
 
-    //reate delete btn
+    //create delete btn
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "delete";
     deleteBtn.style.marginLeft = "20px";
