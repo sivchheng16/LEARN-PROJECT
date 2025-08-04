@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculate</title>
+
+    <style>
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid rebeccapurple;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculater">
+      <!-- Display screen -->
+      <input type="text" id="display" readonly />
+
+      <!-- Buttons -->
+      <div class="buttons">
+        <!-- Row 1 -->
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="appendvalue('/')">/</button>
+        <button onclick="appendvalue('*')">*</button>
+        <button onclick="appendvalue('-')">-</button>
+
+        <!-- Row 2 -->
+        <button onclick="appendvalue('7')">7</button>
+        <button onclick="appendvalue('8')">8</button>
+        <button onclick="appendvalue('9')">9</button>
+        <button onclick="appendvalue('+')">+</button>
+
+        <!-- Row 3 -->
+        <button onclick="appendvalue('4')">4</button>
+        <button onclick="appendvalue('5')">5</button>
+        <button onclick="appendvalue('6')">6</button>
+        <button></button>
+
+        <!-- Row 4 -->
+        <button onclick="appendvalue('1')">1</button>
+        <button onclick="appendvalue('2')">2</button>
+        <button onclick="appendvalue('3')">3</button>
+        <button></button>
+
+        <!-- Row 5 -->
+        <button aria-colspan="2" onclick="appendvalue('0')">0</button>
+        <button onclick="appendvalue('.')">.</button>
+        <button onclick="calculate()">=</button>
+      </div>
+    </div>
+
+    <script>
+      let display = document.getElementById("display");
+
+      display.value = "";
+
+      //  Clear display
+      function clearDisplay() {
+        display.value = "";
+      }
+
+      //   calculate
+      function calculate(value) {
+        try {
+          display.value = eval(display.value);
+        } catch {
+          display.value = "error";
+        }
+      }
+
+      //   value
+      function appendvalue(value) {
+        display.value += value;
+      }
+    </script>
+  </body>
+</html>
