@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>calculate02</title>
     <style>
-      * {
-        margin: 0 auto;
-        box-sizing: border-box;
-        text-align: center;
-      }
-      body {
-        background-color: antiquewhite;
-      }
       .calculater {
         margin-top: 50px;
         width: 50%;
+      }
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
       }
     </style>
   </head>
@@ -25,13 +22,35 @@
 
       <div class="buttons">
         <button onclick="clearHistory()">AC</button>
+        <button onclick="appendValue('/')">/</button>
+        <button onclick="appendValue('*')">*</button>
+        <button onclick="appendValue('-')">-</button>
+
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('+')">+</button>
+
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('')"></button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('')"></button>
+
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="calculate()">=</button>
       </div>
     </div>
 
     <script>
       let display = document.getElementById("display");
 
-      display.value = "pls enter your number you want to calculate";
+      display.value = "";
 
       function clearHistory() {
         display.value = "";
