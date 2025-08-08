@@ -23,17 +23,18 @@
       .buttons button {
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 2px 1px 1px rgba(255, 255, 255, 0.629);
-        border: 1px solid rgba(0, 0, 0, 0.415);
+        box-shadow: 0 2px 1px 1px rgba(255, 255, 255, 0.406);
+        /* border: 1px solid rgba(0, 0, 0, 0.415); */
+        border: none;
       }
 
       .calculate {
-        margin-top: 40%;
+        margin-top: 15%;
         width: 20%;
         border: 1px solid white;
         border-radius: 20px;
         width: fit-content;
-        box-shadow: 0 8px 10px rgba(255, 255, 255, 0.595);
+        box-shadow: 0 8px 10px rgba(255, 255, 255, 0.558);
       }
 
       .calculate input {
@@ -46,6 +47,9 @@
         text-align: right;
         font-size: 20px;
       }
+      .logic {
+        background-color: rgba(246, 177, 49, 0.794);
+      }
     </style>
   </head>
   <body>
@@ -56,22 +60,22 @@
         <button onclick="clearValue()">AC</button>
         <button onclick="de()">DE</button>
         <button onclick="appendValue('.')">.</button>
-        <button onclick="appendValue('/')">/</button>
+        <button onclick="appendValue('/')" class="logic">/</button>
 
         <button onclick="appendValue('7')">7</button>
         <button onclick="appendValue('8')">8</button>
         <button onclick="appendValue('9')">9</button>
-        <button onclick="appendValue('*')">*</button>
+        <button onclick="appendValue('*')" class="logic">*</button>
 
         <button onclick="appendValue('4')">4</button>
         <button onclick="appendValue('5')">5</button>
         <button onclick="appendValue('6')">6</button>
-        <button onclick="appendValue('-')">-</button>
+        <button onclick="appendValue('-')" class="logic">-</button>
 
         <button onclick="appendValue('1')">1</button>
         <button onclick="appendValue('2')">2</button>
         <button onclick="appendValue('3')">3</button>
-        <button onclick="appendValue('+')">+</button>
+        <button onclick="appendValue('+')" class="logic">+</button>
 
         <button onclick="appendValue('00')">00</button>
         <button onclick="appendValue('0')">0</button>
@@ -101,7 +105,7 @@
         try {
           display.value = eval(display.value);
         } catch {
-          display.value = "You Miss Me Right!!";
+          display.value = "Wtf are you doing!!?";
         }
       }
     </script>
