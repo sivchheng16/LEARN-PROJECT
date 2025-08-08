@@ -5,14 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>calculate02</title>
     <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(27, 27, 27);
+      }
+
       .calculater {
         margin-top: 50px;
         width: 20%;
+        background-color: #000000;
+        padding: 10px 0;
+        border-radius: 10px;
+        border: 1px solid rgba(102, 102, 102, 0.671);
+        box-shadow: 0 4px 8px rgba(78, 78, 78, 0.555);
       }
       .buttons {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 10px;
+        padding: 0 5px;
+      }
+
+      .calculater input {
+        width: 95%;
+        border: none;
+        padding: 6px;
+        border-radius: 5px;
+        background-color: transparent;
+        outline: none;
+        font-size: 20px;
+        height: 50px;
+        color: white;
+        text-align: right;
+      }
+
+      .buttons button {
+        border-radius: 60px;
+        padding: 10px;
+        border: none;
+      }
+
+      .buttons .logic {
+        background: rgb(226, 149, 6);
       }
     </style>
   </head>
@@ -22,28 +61,30 @@
 
       <div class="buttons">
         <button onclick="clearHistory()">AC</button>
-        <button onclick="appendValue('/')">/</button>
-        <button onclick="appendValue('*')">*</button>
-        <button onclick="appendValue('-')">-</button>
+        <button onclick="de()">DE</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="appendValue('/')" class="logic">/</button>
 
         <button onclick="appendValue('7')">7</button>
         <button onclick="appendValue('8')">8</button>
         <button onclick="appendValue('9')">9</button>
-        <button onclick="appendValue('+')">+</button>
+        <button onclick="appendValue('*')" class="logic">*</button>
 
         <button onclick="appendValue('4')">4</button>
         <button onclick="appendValue('5')">5</button>
         <button onclick="appendValue('6')">6</button>
-        <button onclick="appendValue('')"></button>
+        <button onclick="appendValue('-')" class="logic">-</button>
 
         <button onclick="appendValue('1')">1</button>
         <button onclick="appendValue('2')">2</button>
         <button onclick="appendValue('3')">3</button>
-        <button onclick="appendValue('')"></button>
+        <button onclick="appendValue('+')" class="logic">+</button>
 
+        <button onclick="appendValue('00')" style="grid-column: 1 / span 2">
+          00
+        </button>
         <button onclick="appendValue('0')">0</button>
-        <button onclick="appendValue('.')">.</button>
-        <button onclick="calculate()">=</button>
+        <button onclick="calculate()" class="logic">=</button>
       </div>
     </div>
 
@@ -71,7 +112,9 @@
         display.value += value;
       }
 
-      
+      function de() {
+        display.value = display.value.toString().slice(0, -1);
+      }
     </script>
   </body>
 </html>
